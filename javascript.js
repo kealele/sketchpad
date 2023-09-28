@@ -30,6 +30,8 @@ function resizeGrid (){
     } else if (x > 64) {
         alert("Max value is 64. Sorry :(")
         resizeGrid();
+    } else if (x === ""){
+        resizeGrid();
     } else {
         createGrid(x);
     }
