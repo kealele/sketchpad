@@ -1,7 +1,8 @@
 const grid = document.querySelector('#grid');
 const sizebutton = document.querySelector(".size");
+const resetbutton = document.querySelector(".reset");
 
-function createGrid (x){
+function Grid (x){
     for (let rows = 0; rows < x; rows++){
         let column = document.createElement('div');
         column.classList.add('column');
@@ -10,12 +11,20 @@ function createGrid (x){
     for (let columns = 0; columns < x; columns++){  
         let block = document.createElement('div');
         block.classList.add('block');
-        column.appendChild(block)
+        column.appendChild(block);
+
+        block.addEventListener ('mouseover', () => {
+            block.style.backgroundColor = 'red';  
+        });
+
+        resetbutton.addEventListener('click', () => {
+            block.style.cssText = 'background-color: rgb(43, 43, 43);';
+        });
     }
     }
 }
 
-createGrid(16);
+Grid(16);
 
 function resizeGrid (){
     grid.innerHTML = '';
@@ -26,14 +35,14 @@ function resizeGrid (){
         alert("Please, use a positive value")
         resizeGrid();
     } else if (x === null){
-        createGrid(16);
+        Grid(16);
     } else if (x > 64) {
         alert("Max value is 64. Sorry :(")
         resizeGrid();
     } else if (x === ""){
         resizeGrid();
     } else {
-        createGrid(x);
+        Grid(x);
     }
 }
 
