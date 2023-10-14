@@ -1,7 +1,13 @@
 const grid = document.querySelector('#grid');
 const sizebutton = document.querySelector(".size");
 const resetbutton = document.querySelector(".reset");
-
+const eraserbutton = document.querySelector('.eraser');
+const rainbowbutton = document.querySelector('.rainbow');
+const whitebutton = document.querySelector('.whitecolor');
+const redbutton = document.querySelector('.redcolor');
+const greenbutton = document.querySelector('.greencolor');
+const bluebutton = document.querySelector('.bluecolor');
+const blackbutton = document.querySelector('.blackcolor')
 function Grid (x){
     for (let rows = 0; rows < x; rows++){
         let column = document.createElement('div');
@@ -14,8 +20,44 @@ function Grid (x){
         column.appendChild(block);
 
         block.addEventListener ('mouseover', () => {
-            block.style.backgroundColor = 'red';  
+            block.style.backgroundColor = 'black';  
         });
+
+        rainbowbutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#" + Math.floor(Math.random()*16777215).toString(16);;  
+            });
+        });
+        blackbutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#000000";
+            })
+        })
+        eraserbutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#2b2b2b";
+            })
+        })
+        whitebutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#ffffff";
+            })
+        })
+        redbutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#ff0000";
+            })
+        })
+        greenbutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#00ff00";
+            })
+        })
+        bluebutton.addEventListener ('click', () => {
+            block.addEventListener ('mouseover', () => {
+                block.style.backgroundColor = "#0000ff";
+            })
+        })
 
         resetbutton.addEventListener('click', () => {
             block.style.cssText = 'background-color: rgb(43, 43, 43);';
